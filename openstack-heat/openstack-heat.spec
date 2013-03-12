@@ -10,7 +10,7 @@
 Name:		openstack-heat
 Summary:	OpenStack Orchestration (heat)
 Version:	2013.1
-Release:	0.1.%{release_letter}%{milestone}%{?dist}
+Release:	0.2.%{release_letter}%{milestone}%{?dist}
 License:	ASL 2.0
 Group:		System Environment/Base
 URL:		http://heat-api.org/
@@ -29,6 +29,7 @@ BuildRequires: python2-devel
 BuildRequires: python-setuptools
 BuildRequires: python-sphinx
 BuildRequires: systemd-units
+BuildRequires: python-glanceclient
 
 Requires: %{name}-common = %{version}-%{release}
 Requires: %{name}-engine = %{version}-%{release}
@@ -42,6 +43,9 @@ Requires: %{name}-cli = %{version}-%{release}
 
 %build
 %{__python} setup.py build
+
+%check
+./run_tests.sh -p -u
 
 %install
 %{__python} setup.py install -O1 --skip-build --root=%{buildroot}
@@ -90,23 +94,29 @@ Heat provides AWS CloudFormation and CloudWatch functionality for OpenStack.
 Summary: Heat common
 Group: System Environment/Base
 
+Requires: python-argparse
+Requires: python-boto
+Requires: python-crypto
 Requires: python-eventlet
-Requires: python-glance
 Requires: python-greenlet
 Requires: python-httplib2
 Requires: python-iso8601
-Requires: python-keystoneclient
 Requires: python-kombu
 Requires: python-lxml
-Requires: python-memcached
-Requires: python-migrate
-Requires: python-novaclient
 Requires: python-paste
-Requires: python-qpid
+Requires: python-cinderclient
+Requires: python-keystoneclient
+Requires: python-memcached
+Requires: python-novaclient
+Requires: python-oslo-config
+Requires: python-quantumclient
+Requires: python-swiftclient
 Requires: python-routes
-Requires: pysendfile
 Requires: python-sqlalchemy
+Requires: python-migrate
+Requires: python-qpid
 Requires: python-webob
+Requires: PyYAML
 
 Requires(pre): shadow-utils
 
