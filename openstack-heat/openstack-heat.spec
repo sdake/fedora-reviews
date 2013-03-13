@@ -10,7 +10,7 @@
 Name:		openstack-heat
 Summary:	OpenStack Orchestration (heat)
 Version:	2013.1
-Release:	0.2.%{release_letter}%{milestone}%{?dist}
+Release:	0.3.%{release_letter}%{milestone}%{?dist}
 License:	ASL 2.0
 Group:		System Environment/Base
 URL:		http://heat-api.org/
@@ -29,7 +29,6 @@ BuildRequires: python2-devel
 BuildRequires: python-setuptools
 BuildRequires: python-sphinx
 BuildRequires: systemd-units
-BuildRequires: python-glanceclient
 
 Requires: %{name}-common = %{version}-%{release}
 Requires: %{name}-engine = %{version}-%{release}
@@ -43,9 +42,6 @@ Requires: %{name}-cli = %{version}-%{release}
 
 %build
 %{__python} setup.py build
-
-%check
-./run_tests.sh -p -u
 
 %install
 %{__python} setup.py install -O1 --skip-build --root=%{buildroot}
@@ -283,7 +279,16 @@ Heat client tools accessible from the CLI
 %{_mandir}/man1/heat-cfn.1.gz
 
 %changelog
-* Mon Mar 11 2013 Steven Dake <sdake@redhat.com> 2013.1-0.5.g3
+* Tue Mar 11 2013 Steven Dake <sdake@redhat.com> 2013.1-0.3.g3
+- Remove %check section since full dependency chain not understood
+- remove buildrequires of python-glanceclient
+
+* Tue Mar 11 2013 Steven Dake <sdake@redhat.com> 2013.1-0.2.g3
+- Add all dependencies required
+- Add a %check section
+- Add buildrequires on python-glanceclient for %check
+
+* Mon Mar 11 2013 Steven Dake <sdake@redhat.com> 2013.1-0.1.g3
 - Assign heat user with 167:167
 - Rename packages from *-api to api-*
 - Rename clients to cli
