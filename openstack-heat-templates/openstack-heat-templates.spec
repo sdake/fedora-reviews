@@ -7,6 +7,7 @@ Version: 0
 Release: 0.1.%{alphatag}%{?dist}
 Summary: Heat example templates and DIB elements Group: System Environment/Base
 License: ASL 2.0
+URL: https://github.com/openstack/heat-templates
 Source0: https://github.com/openstack/heat-templates/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 
 BuildArch: noarch
