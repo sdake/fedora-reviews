@@ -16,7 +16,7 @@ Requires: qemu-img
 Requires: openstack-glance
 Requires: diskimage-builder
 Requires: libvirt-daemon
-Provides: heat-jeos <= 9-1
+Obsoletes: heat-jeos <= 9-1
 
 BuildArch: noarch
 
