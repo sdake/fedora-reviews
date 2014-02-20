@@ -1,6 +1,6 @@
 Name:			os-collect-config
 Version:		0.1.11
-Release:		2%{?dist}
+Release:		3%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
@@ -12,9 +12,11 @@ BuildArch:		noarch
 BuildRequires:		python-setuptools
 BuildRequires:		python2-devel
 BuildRequires:		systemd
+BuildRequires:		python-pbr
 
 Requires:		python-setuptools
 Requires:		python-argparse
+Requires:		python-anyjson
 Requires:		python-eventlet
 Requires:		python-keystoneclient
 Requires:		python-requests
@@ -57,6 +59,10 @@ install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/os-collect-config.servic
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Thu Feb 20 2014 Steven Dake <sdake@redhat.com> - 0.1.11-3
+- Added missing dependency python-anyjson
+- Added missing build requires python-pbr
+
 * Thu Feb 20 2014 Steven Dake <sdake@redhat.com> - 0.1.11-2
 - Fixed missing dependency python-oslo-config
 - Added cr after every changelog entry
