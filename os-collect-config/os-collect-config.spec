@@ -1,6 +1,6 @@
 Name:			os-collect-config
 Version:		0.1.11
-Release:		1%{?dist}
+Release:		2%{?dist}
 Summary:		Collect and cache metadata running hooks on changes
 
 License:		ASL 2.0
@@ -21,6 +21,7 @@ Requires:		python-requests
 Requires:		python-iso8601
 Requires:		python-lxml
 Requires:		python-six
+Requires:		python-oslo-config
 Requires(post):		systemd
 Requires(preun):	systemd
 Requires(postun):	systemd
@@ -56,6 +57,10 @@ install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/os-collect-config.servic
 %{_unitdir}/os-collect-config.service
 
 %changelog
+* Thu Feb 20 2014 Steven Dake <sdake@redhat.com> - 0.1.11-2
+- Fixed missing dependency python-oslo-config
+- Added cr after every changelog entry
+
 * Wed Feb 19 2014 Steven Dake <sdake@redhat.com> - 0.1.11-1
 - Update to version 0.1.11
 - Add python2-devel build requires
@@ -65,5 +70,6 @@ install -p -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/os-collect-config.servic
 
 * Tue Oct 15 2013 Lucas Alvares Gomes <lgomes@redhat.com> - 0.1.2-1
 - Update to version 0.1.2
+
 * Fri Sep 6 2013 Lucas Alvares Gomes <lgomes@redhat.com> - 0.0.1-1
 - Initial version
